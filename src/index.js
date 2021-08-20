@@ -1,12 +1,14 @@
-import { StrictMode } from "react";
-import ReactDOM from "react-dom";
+import React from "react";
+import { render } from "react-dom";
+import { Provider } from "./statty";
+import generateTree from "./generateTree";
+import Node from "./containers/Node";
 
-import App from "./App";
+const tree = generateTree();
 
-const rootElement = document.getElementById("root");
-ReactDOM.render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-  rootElement
+render(
+  <Provider state={tree}>
+    <Node id={0} />
+  </Provider>,
+  document.getElementById("root")
 );
